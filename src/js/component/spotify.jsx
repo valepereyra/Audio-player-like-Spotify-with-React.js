@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 //create your first component
-const Home = () => {
+const HomeSpotify = () => {
   const songURL = "https://assets.breatheco.de/apis/sound/songs";
   const [listadecanciones, setListadecanciones] = useState([]);
   const [posicion, setPosicion] = useState(0);
@@ -9,14 +9,11 @@ const Home = () => {
   const [playing, setPlaying] = useState(false);
   const reproducir = useRef(null);
 
-  //aca los useEffect
   useEffect(() => {
-    //codigo a ejecutar
-    console.log("La pagina se ha cargado exitosamente");
     fetch(songURL) //1.ir a buscar info en la url
-      .then((response) => response.json()) //2.Convierte la respuesta en un json
-      .then((data) => setListadecanciones(data)); //3. GUarda el json en un objeto data
-  }, []); //cuando el array está vacio el va a cargar el codigo a ejecutar UNA vez cargada la pagina
+      .then((response) => response.json())
+      .then((data) => setListadecanciones(data));
+  }, []);
   console.log(listadecanciones);
 
   function tocarCancion(url, index) {
@@ -53,11 +50,11 @@ const Home = () => {
 
   return (
     <>
-      <div className="container w-50 bg-dark fw-bolder text-white "  id="spotify">Spotify <img src="https://th.bing.com/th/id/R.148b28a3992349e8db92184c65d24bbd?rik=AJNg4RcAH8fwOg&riu=http%3a%2f%2forig12.deviantart.net%2f846f%2ff%2f2015%2f245%2f9%2fb%2fnew_spotify_icon_by_mattroxzworld-d98301o.png&ehk=4kqixXCdaWV6y4x6GzGcuj9iskpnJgcYXxemWAfh3cc%3d&risl=&pid=ImgRaw&r=0" width="50"
-                                  height="50"></img></div>
-      
+      <div className="container w-50 bg-dark fw-bolder text-white " id="spotify">Spotify <img src="https://th.bing.com/th/id/R.148b28a3992349e8db92184c65d24bbd?rik=AJNg4RcAH8fwOg&riu=http%3a%2f%2forig12.deviantart.net%2f846f%2ff%2f2015%2f245%2f9%2fb%2fnew_spotify_icon_by_mattroxzworld-d98301o.png&ehk=4kqixXCdaWV6y4x6GzGcuj9iskpnJgcYXxemWAfh3cc%3d&risl=&pid=ImgRaw&r=0" width="50"
+        height="50"></img></div>
+
       <div className="container w-50 bg-dark">
-      
+
         {/* dibujamos la lista de canciones */}
         {/* <div className="list-group bg-dark rounded-0" id="navbar"> */}
         {/* dibujamos la lista de canciones */}
@@ -110,4 +107,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeSpotify;
